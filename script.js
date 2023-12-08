@@ -1,7 +1,3 @@
-// document.querySelector(".start").addEventListener("click", () => {
-//     document.querySelector(".header").style.marginTop = "10px";
-// })
-
 const surveyQuestions = [
     {
       label: 'Как часто',
@@ -207,6 +203,7 @@ const surveyQuestions = [
 let answers = [];
 
 setQuestion(0);
+
 const arrow = document.querySelector(".next");
 arrow.addEventListener("click", () => {
     arrow.src = "images/disabled-arrow-right.svg";
@@ -214,16 +211,13 @@ arrow.addEventListener("click", () => {
 
 let counter = 0;
 function setCounter() {
-    if (counter >= 39) {
-        return;
-    }
+    if (counter >= 39) return;
     counter++;
     setQuestion(counter);
     document.querySelector(".counter").innerHTML = `${counter + 1}/40`;
 }
 function setQuestion(index) {
     const question = surveyQuestions[index];
-
     document.querySelector(".question-wrapper").innerHTML = `
     <div class="questions">
                 <p class="label">${question.label}</p>
@@ -234,7 +228,6 @@ function setQuestion(index) {
                 <button>${question.variants[1]}</button>
                 <button>${question.variants[2]}</button>
             </div>`;
-    
     parseButtons();
 }
 function parseButtons() {
